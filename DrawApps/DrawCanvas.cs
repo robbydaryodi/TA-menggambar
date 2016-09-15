@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Util;
 using Android.Graphics;
 
 
@@ -17,10 +18,38 @@ namespace DrawApps
 {
     public class DrawCanvas : View
     {
-        public DrawCanvas(Context context) : base(context)
-        {
+        //public DrawCanvas(Context context) : base(context)
+        //{
 
+        //}
+        Context mContext;
+        public bool drawAble; //boolean to check if drawable is active or not.
+
+        #region Default Initialization for View
+        public DrawCanvas(Context context):
+        base(context)
+        {
+            init(context);
         }
+
+        public DrawCanvas(Context context, IAttributeSet attrs):
+        base(context, attrs)
+        {
+            init(context);
+        }
+
+        public DrawCanvas(Context context, IAttributeSet attrs, int defStyle) :
+		base(context, attrs, defStyle)
+		{
+            init(context);
+        }
+
+        private void init(Context ctx)
+        {
+            mContext = ctx;
+            start();
+        }
+        #endregion
 
         //DrawCanvas.BackgroundColor = Android.Graphics.Color.ParseColor("#FF6A00");
         private Path drawPath; //Variable menampung jalur2 coretan
@@ -48,6 +77,8 @@ namespace DrawApps
             //canvasPaint.Color = Color.White;
         }
 
+        
+
         /*
          * OnSizeChanged
          * event yang menghandle perubahan ukuran tempat menggambar. 
@@ -63,16 +94,18 @@ namespace DrawApps
             drawCanvas = new Canvas(canvasBitmap);
         }
 
-
         /*
          * Event menghandle proses penggambaran.
          * 
          */ 
         protected override void OnDraw(Canvas canvas)
         {
-            canvas.DrawBitmap(canvasBitmap, 0, 0, canvasPaint);
-            canvas.DrawPath(drawPath, drawPaint);
-            //canvas.DrawColor(Color.White, PorterDuff.Mode.Clear);
+            
+                canvas.DrawBitmap(canvasBitmap, 0, 0, canvasPaint);
+                canvas.DrawPath(drawPath, drawPaint);
+                //canvas.DrawColor(Color.White, PorterDuff.Mode.Clear);
+            
+
         }
 
 
@@ -83,24 +116,27 @@ namespace DrawApps
          */ 
         public override bool OnTouchEvent(MotionEvent e)
         {
-            float touchX = e.GetX();
-            float touchY = e.GetY();
-            switch (e.Action)
+            if (drawAble) //if drawable true then draw is enabled
             {
-                case MotionEventActions.Down: // even ketika jari/pointer menyentuh layar.
-                    drawPath.MoveTo(touchX, touchY);
-                    break;
-                case MotionEventActions.Move: // even ketika jari/pointer digerakkan sesudah menyentuh layar.
-                    drawPath.LineTo(touchX, touchY);
-                    break;
-                case MotionEventActions.Up: // even ketika jari/pointer diangkat dari layar.
-                    drawCanvas.DrawPath(drawPath, drawPaint); // menyimpan jalur2 coretan di "drawPath" dengan properti2 pada "drawPaint"
-                    drawPath.Reset(); // reset jalur2 coretan jika jari/pointer menyentuh layar lagi.
-                    break;
-                default:
-                    return false;
+                float touchX = e.GetX();
+                float touchY = e.GetY();
+                switch (e.Action)
+                {
+                    case MotionEventActions.Down: // even ketika jari/pointer menyentuh layar.
+                        drawPath.MoveTo(touchX, touchY);
+                        break;
+                    case MotionEventActions.Move: // even ketika jari/pointer digerakkan sesudah menyentuh layar.
+                        drawPath.LineTo(touchX, touchY);
+                        break;
+                    case MotionEventActions.Up: // even ketika jari/pointer diangkat dari layar.
+                        drawCanvas.DrawPath(drawPath, drawPaint); // menyimpan jalur2 coretan di "drawPath" dengan properti2 pada "drawPaint"
+                        drawPath.Reset(); // reset jalur2 coretan jika jari/pointer menyentuh layar lagi.
+                        break;
+                    default:
+                        return false;
+                }
+                Invalidate();
             }
-            Invalidate();
             return true;
         }
 

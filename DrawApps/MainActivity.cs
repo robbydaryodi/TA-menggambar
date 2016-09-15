@@ -18,19 +18,37 @@ namespace DrawApps
             SetContentView(Resource.Layout.Main);
 
             ToggleButton btn = FindViewById<ToggleButton>(Resource.Id.toggleButton1);
+
+            /*
+             * DrawCanvas = kelas yang sudah dimasuakkan ka Main.axml dan dipanggil dengan id = "drawcanvas_main",cek Main.axml 
+             */ 
+            DrawCanvas dc = FindViewById<DrawCanvas>(Resource.Id.drawcanvas_main);
+            
+            //event button clicked.
             btn.Click += (o, e) =>
             {
                 if (btn.Checked)
                 {
 
-                    DrawCanvas draw = new DrawCanvas(this);
-                    draw.SetBackgroundColor(Color.White);
-                    draw.start();
-                    SetContentView(draw);
+                    //DrawCanvas draw = new DrawCanvas(this);
+                    //draw.SetBackgroundColor(Color.White);
+                    //draw.start();
+                    btn.SetBackgroundColor(Color.Green); //Set button background color = green
+                    dc.drawAble = true; //draw is enabled 
+                    //dc.Visibility = ViewStates.Visible;
+                    //LinearLayout view = FindViewById<LinearLayout>(Resource.Id.view);
+                    //view.
+                    //SetContentView(draw);
+
                 }
                 else
                 {
-                    SetContentView(Resource.Layout.Main);
+                    btn.SetBackgroundColor(Color.Red); //toggle off then cannot draw on canvas
+                    dc.drawAble = false; // draw is disabled
+                    //dc.Visibility = ViewStates.Gone;
+                    //dc.Reset();
+                    //SetContentView(Resource.Layout.Main);
+
                 }
                 
             };
