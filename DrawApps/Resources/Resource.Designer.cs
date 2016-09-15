@@ -41,6 +41,22 @@ namespace DrawApps
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int white = 2130968576;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
@@ -53,6 +69,25 @@ namespace DrawApps
 			}
 			
 			private Drawable()
+			{
+			}
+		}
+		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f060001
+			public const int absoluteLayout1 = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int button1 = 2131099648;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
 			{
 			}
 		}
@@ -76,11 +111,11 @@ namespace DrawApps
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
 			
 			static String()
 			{
