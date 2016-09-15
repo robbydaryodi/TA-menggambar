@@ -44,6 +44,15 @@ namespace DrawApps
 		public partial class Color
 		{
 			
+			// aapt resource value: 0x7f040001
+			public const int blue = 2130968577;
+			
+			// aapt resource value: 0x7f040003
+			public const int green = 2130968579;
+			
+			// aapt resource value: 0x7f040002
+			public const int red = 2130968578;
+			
 			// aapt resource value: 0x7f040000
 			public const int white = 2130968576;
 			
@@ -63,6 +72,9 @@ namespace DrawApps
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
 			
+			// aapt resource value: 0x7f020001
+			public const int ToggleBtn = 2130837505;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -76,11 +88,8 @@ namespace DrawApps
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int absoluteLayout1 = 2131099649;
-			
 			// aapt resource value: 0x7f060000
-			public const int button1 = 2131099648;
+			public const int toggleButton1 = 2131099648;
 			
 			static Id()
 			{
