@@ -72,6 +72,7 @@ namespace DrawApps
         {
             canvas.DrawBitmap(canvasBitmap, 0, 0, canvasPaint);
             canvas.DrawPath(drawPath, drawPaint);
+            //canvas.DrawColor(Color.White, PorterDuff.Mode.Clear);
         }
 
 
