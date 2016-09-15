@@ -22,6 +22,7 @@ namespace DrawApps
 
         }
 
+        //DrawCanvas.BackgroundColor = Android.Graphics.Color.ParseColor("#FF6A00");
         private Path drawPath; //Variable menampung jalur2 coretan
         private Paint drawPaint, canvasPaint; // variable menampung properti gambar dan tempat gambar coretan
         private uint paintColor = 0xFF660000; // warna coretan/gambar 0xFF660000 = merah  -> link: http://colrd.com/color/0xff660000/
@@ -44,6 +45,7 @@ namespace DrawApps
             drawPaint.StrokeCap = Paint.Cap.Round;
             canvasPaint = new Paint();
             canvasPaint.Dither = true;
+            //canvasPaint.Color = Color.White;
         }
 
         /*
