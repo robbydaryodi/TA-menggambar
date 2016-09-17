@@ -24,31 +24,19 @@ namespace DrawApps
              */ 
             DrawCanvas dc = FindViewById<DrawCanvas>(Resource.Id.drawcanvas_main);
             
-            //event button clicked.
+            //Toggle button event click.
             btn.Click += (o, e) =>
             {
                 if (btn.Checked)
-                {
-
-                    //DrawCanvas draw = new DrawCanvas(this);
-                    //draw.SetBackgroundColor(Color.White);
-                    //draw.start();
+                {                    
                     btn.SetBackgroundColor(Color.Green); //Set button background color = green
                     dc.drawAble = true; //draw is enabled 
-                    //dc.Visibility = ViewStates.Visible;
-                    //LinearLayout view = FindViewById<LinearLayout>(Resource.Id.view);
-                    //view.
-                    //SetContentView(draw);
 
                 }
                 else
                 {
                     btn.SetBackgroundColor(Color.Red); //toggle off then cannot draw on canvas
                     dc.drawAble = false; // draw is disabled
-                    //dc.Visibility = ViewStates.Gone;
-                    //dc.Reset();
-                    //SetContentView(Resource.Layout.Main);
-
                 }
                 
             };
