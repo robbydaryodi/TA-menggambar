@@ -12,37 +12,35 @@ namespace DrawApps
     [Activity(Label = "DrawApps", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
+        private DrawCanvas drawView;
+        private ImageButton currPaint;
+        Context context;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            SetContentView(Resource.Layout.Main);
-
-            ToggleButton btn = FindViewById<ToggleButton>(Resource.Id.toggleButton1);
-
-            /*
-             * DrawCanvas = kelas yang sudah dimasuakkan ka Main.axml dan dipanggil dengan id = "drawcanvas_main",cek Main.axml 
-             */ 
-            DrawCanvas dc = FindViewById<DrawCanvas>(Resource.Id.drawcanvas_main);
-            
-            //Toggle button event click.
-            btn.Click += (o, e) =>
-            {
-                if (btn.Checked)
-                {                    
-                    btn.SetBackgroundColor(Color.Green); //Set button background color = green
-                    dc.drawAble = true; //draw is enabled 
-
-                }
-                else
-                {
-                    btn.SetBackgroundColor(Color.Red); //toggle off then cannot draw on canvas
-                    dc.drawAble = false; // draw is disabled
-                }
-                
-            };
 
             // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
 
+            drawView = FindViewById<DrawCanvas>(Resource.Id.drawing);
+            LinearLayout paintLayout = FindViewById<LinearLayout>(Resource.Id.paint_colors);
+            currPaint = (ImageButton)paintLayout.GetChildAt(0);
+            currPaint.SetImageResource(Resource.Drawable.paint_pressed);
+        }
+
+        public void paintClicked(View view)
+        {
+            if (view != currPaint)
+            {
+                ImageButton imgView = (ImageButton)view;
+                String color = view.Tag.ToString(); //view.Tag.ToString();
+
+                drawView.setColor(color);
+                imgView.SetImageResource(Resource.Drawable.paint_pressed);
+                currPaint.SetImageResource(Resource.Drawable.paint);
+                currPaint = (ImageButton)view;
+            }
         }
     }
 }
