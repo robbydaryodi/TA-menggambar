@@ -66,6 +66,14 @@ namespace DrawApps
         {
             //base.OnDraw(canvas);
             canvas.DrawBitmap(canvasBitmap, 0, 0, canvasPaint);
+
+            //Check whether erase is true or not
+            if (erase == true)
+            {
+                drawPaint.Color = Color.White;
+                canvas.DrawPath(drawPath, drawPaint);
+            }
+
             canvas.DrawPath(drawPath, drawPaint);
         }
 
@@ -123,10 +131,15 @@ namespace DrawApps
         public void setErase(bool isErase)
         {
             erase = isErase;
-            if (erase)
-                drawPaint.SetXfermode(new PorterDuffXfermode(PorterDuff.Mode.Clear));
-            else
-                drawPaint.SetXfermode(null);
+            //if (erase)
+            //{
+            //    drawPaint.SetXfermode(new PorterDuffXfermode(PorterDuff.Mode.Clear));
+            //}
+            //else
+            //{
+            //    drawPaint.SetXfermode(null);
+            //}
+                
         }
 
         public void startNew()
