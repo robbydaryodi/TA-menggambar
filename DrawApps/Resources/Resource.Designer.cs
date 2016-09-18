@@ -66,14 +66,63 @@ namespace DrawApps
 			}
 		}
 		
+		public partial class Dimension
+		{
+			
+			// aapt resource value: 0x7f050002
+			public const int large_brush = 2131034114;
+			
+			// aapt resource value: 0x7f050001
+			public const int medium_brush = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int small_brush = 2131034112;
+			
+			static Dimension()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Dimension()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int brush = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int ToggleBtn = 2130837505;
+			public const int eraser = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int Icon = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int large = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int medium = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int new_pic = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int paint = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int paint_pressed = 2130837511;
+			
+			// aapt resource value: 0x7f020008
+			public const int save = 2130837512;
+			
+			// aapt resource value: 0x7f020009
+			public const int small = 2130837513;
+			
+			// aapt resource value: 0x7f02000a
+			public const int ToggleBtn = 2130837514;
 			
 			static Drawable()
 			{
@@ -88,11 +137,32 @@ namespace DrawApps
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int drawcanvas_main = 2131099649;
+			// aapt resource value: 0x7f080004
+			public const int draw_btn = 2131230724;
 			
-			// aapt resource value: 0x7f060000
-			public const int toggleButton1 = 2131099648;
+			// aapt resource value: 0x7f080007
+			public const int drawing = 2131230727;
+			
+			// aapt resource value: 0x7f080005
+			public const int erase_btn = 2131230725;
+			
+			// aapt resource value: 0x7f080002
+			public const int large_brush = 2131230722;
+			
+			// aapt resource value: 0x7f080001
+			public const int medium_brush = 2131230721;
+			
+			// aapt resource value: 0x7f080003
+			public const int new_btn = 2131230723;
+			
+			// aapt resource value: 0x7f080008
+			public const int paint_colors = 2131230728;
+			
+			// aapt resource value: 0x7f080006
+			public const int save_btn = 2131230726;
+			
+			// aapt resource value: 0x7f080000
+			public const int small_brush = 2131230720;
 			
 			static Id()
 			{
@@ -104,11 +174,36 @@ namespace DrawApps
 			}
 		}
 		
+		public partial class Integer
+		{
+			
+			// aapt resource value: 0x7f060002
+			public const int large_size = 2131099650;
+			
+			// aapt resource value: 0x7f060001
+			public const int medium_size = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int small_size = 2131099648;
+			
+			static Integer()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Integer()
+			{
+			}
+		}
+		
 		public partial class Layout
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int brush_chooser = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Main = 2130903041;
 			
 			static Layout()
 			{
@@ -123,11 +218,35 @@ namespace DrawApps
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int ApplicationName = 2131034113;
+			// aapt resource value: 0x7f070001
+			public const int ApplicationName = 2131165185;
 			
-			// aapt resource value: 0x7f050000
-			public const int Hello = 2131034112;
+			// aapt resource value: 0x7f070000
+			public const int Hello = 2131165184;
+			
+			// aapt resource value: 0x7f070003
+			public const int brush = 2131165187;
+			
+			// aapt resource value: 0x7f070004
+			public const int erase = 2131165188;
+			
+			// aapt resource value: 0x7f070009
+			public const int lrg = 2131165193;
+			
+			// aapt resource value: 0x7f070008
+			public const int med = 2131165192;
+			
+			// aapt resource value: 0x7f070006
+			public const int paint = 2131165190;
+			
+			// aapt resource value: 0x7f070005
+			public const int save = 2131165189;
+			
+			// aapt resource value: 0x7f070007
+			public const int sml = 2131165191;
+			
+			// aapt resource value: 0x7f070002
+			public const int start_new = 2131165186;
 			
 			static String()
 			{
