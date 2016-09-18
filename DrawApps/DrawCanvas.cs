@@ -29,6 +29,10 @@ namespace DrawApps
         //canvas bitmap
         private Bitmap canvasBitmap;
 
+        private float brushSize, lastBrushSize;
+
+        //erase state
+        private bool erase = false;
 
         public DrawCanvas(Context context, IAttributeSet attrs): base(context,attrs)
         {
@@ -37,11 +41,13 @@ namespace DrawApps
 
         private void setupDrawing()
         {
+            brushSize = Resources.GetInteger(Resource.Integer.medium_size);
+            lastBrushSize = brushSize;
             drawPath = new Path();
             drawPaint = new Paint();
             drawPaint.Color = new Color((int)paintColor);
             drawPaint.AntiAlias = true;
-            drawPaint.StrokeWidth = 20;
+            drawPaint.StrokeWidth = brushSize;
             drawPaint.SetStyle(Paint.Style.Stroke);
             drawPaint.StrokeJoin = Paint.Join.Round;
             drawPaint.StrokeCap = Paint.Cap.Round;
@@ -90,10 +96,43 @@ namespace DrawApps
         public void setColor(string newColor)
         {
             Invalidate();
-            paintColor = Convert.ToUInt32(Color.ParseColor(newColor));
+            //paintColor = Convert.ToUInt32(Color.ParseColor(newColor));
+            int kolor = Color.ParseColor(newColor);
+            paintColor = (uint)kolor;
             //Log.Info("Info", Convert.ToUInt32(Color.ParseColor(newColor))+"");
             drawPaint.Color = new Color((int)paintColor);
         }
 
+        public void setBrushSize(float newSize)
+        {
+            float pixelAmount = TypedValue.ApplyDimension(ComplexUnitType.Dip, newSize, Resources.DisplayMetrics);
+            brushSize = pixelAmount;
+            drawPaint.StrokeWidth = brushSize;
+        }
+
+        public void setLastBrushSize(float lastSize)
+        {
+            lastBrushSize = lastSize;
+        }
+
+        public float getLastBrushSize()
+        {
+            return lastBrushSize;
+        }
+
+        public void setErase(bool isErase)
+        {
+            erase = isErase;
+            if (erase)
+                drawPaint.SetXfermode(new PorterDuffXfermode(PorterDuff.Mode.Clear));
+            else
+                drawPaint.SetXfermode(null);
+        }
+
+        public void startNew()
+        {
+            drawCanvas.DrawColor(Color.Transparent ,PorterDuff.Mode.Clear);
+            Invalidate();
+        }
     }
 }
