@@ -137,32 +137,35 @@ namespace DrawApps
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080004
-			public const int draw_btn = 2131230724;
-			
-			// aapt resource value: 0x7f080007
-			public const int drawing = 2131230727;
+			// aapt resource value: 0x7f080000
+			public const int brush_size_chooser = 2131230720;
 			
 			// aapt resource value: 0x7f080005
-			public const int erase_btn = 2131230725;
-			
-			// aapt resource value: 0x7f080002
-			public const int large_brush = 2131230722;
-			
-			// aapt resource value: 0x7f080001
-			public const int medium_brush = 2131230721;
-			
-			// aapt resource value: 0x7f080003
-			public const int new_btn = 2131230723;
+			public const int draw_btn = 2131230725;
 			
 			// aapt resource value: 0x7f080008
-			public const int paint_colors = 2131230728;
+			public const int drawing = 2131230728;
 			
 			// aapt resource value: 0x7f080006
-			public const int save_btn = 2131230726;
+			public const int erase_btn = 2131230726;
 			
-			// aapt resource value: 0x7f080000
-			public const int small_brush = 2131230720;
+			// aapt resource value: 0x7f080003
+			public const int large_brush = 2131230723;
+			
+			// aapt resource value: 0x7f080002
+			public const int medium_brush = 2131230722;
+			
+			// aapt resource value: 0x7f080004
+			public const int new_btn = 2131230724;
+			
+			// aapt resource value: 0x7f080009
+			public const int paint_colors = 2131230729;
+			
+			// aapt resource value: 0x7f080007
+			public const int save_btn = 2131230727;
+			
+			// aapt resource value: 0x7f080001
+			public const int small_brush = 2131230721;
 			
 			static Id()
 			{

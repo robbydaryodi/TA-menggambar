@@ -40,9 +40,17 @@ namespace DrawApps
             saveBtn = FindViewById<ImageButton>(Resource.Id.save_btn);
             saveBtn.SetOnClickListener(this);
 
-            
+            //Initialize Color on the first time program run
+            lastColor = "#FF660000"; //red maroon
+
+            //Set medium brush as disabled as it's already clicked 
+            //LinearLayout brushchooser = FindViewById<LinearLayout>(Resource.Id.brush_size_chooser);
+            //ImageButton mediumBtn = brushchooser.FindViewById<ImageButton>(Resource.Id.medium_brush);
+            //mediumBtn.Enabled = false;
+
+
             // Set our view from the "main" layout resource
-            
+
 
             drawView = FindViewById<DrawCanvas>(Resource.Id.drawing);
             drawView.setLastBrushSize(mediumBrush);
@@ -70,6 +78,8 @@ namespace DrawApps
                 imgView.SetImageResource(Resource.Drawable.paint_pressed);
                 currPaint.SetImageResource(Resource.Drawable.paint);
                 currPaint = (ImageButton)view;
+                
+                
             }
         }
 
