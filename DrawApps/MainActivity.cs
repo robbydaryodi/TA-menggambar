@@ -24,6 +24,8 @@ namespace DrawApps
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            this.RequestWindowFeature(WindowFeatures.NoTitle);
+            this.Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             SetContentView(Resource.Layout.Main);
 
             smallBrush = Resources.GetInteger(Resource.Integer.small_size);
