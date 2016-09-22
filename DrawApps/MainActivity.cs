@@ -18,11 +18,14 @@ namespace DrawApps
         private DrawCanvas drawView;
         private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn;
         private float smallBrush, mediumBrush, largeBrush;
+        private string lastColor;
         
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            this.RequestWindowFeature(WindowFeatures.NoTitle);
+            this.Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             SetContentView(Resource.Layout.Main);
 
             smallBrush = Resources.GetInteger(Resource.Integer.small_size);
@@ -61,6 +64,7 @@ namespace DrawApps
 
                 ImageButton imgView = (ImageButton)view;
                 String color = view.Tag.ToString(); //view.Tag.ToString();
+                lastColor = color;
 
                 drawView.setColor(color);
                 imgView.SetImageResource(Resource.Drawable.paint_pressed);
@@ -78,9 +82,13 @@ namespace DrawApps
                 brushDialog.SetTitle("Brush Size:");
                 brushDialog.SetContentView(Resource.Layout.brush_chooser);
 
+                //Set Erase button false and set color
+                drawView.setErase(false);
+
                 ImageButton smallBtn = brushDialog.FindViewById<ImageButton>(Resource.Id.small_brush);
                 smallBtn.Click += delegate
                 {
+                    drawView.setColor(lastColor);
                     drawView.setBrushSize(smallBrush);
                     drawView.setLastBrushSize(smallBrush);
                     drawView.setErase(false);
@@ -88,8 +96,9 @@ namespace DrawApps
                 };
 
                 ImageButton mediumBtn = brushDialog.FindViewById<ImageButton>(Resource.Id.medium_brush);
-                smallBtn.Click += delegate
+                mediumBtn.Click += delegate
                 {
+                    drawView.setColor(lastColor);
                     drawView.setBrushSize(mediumBrush);
                     drawView.setLastBrushSize(mediumBrush);
                     drawView.setErase(false);
@@ -97,8 +106,9 @@ namespace DrawApps
                 };
 
                 ImageButton largeBtn = brushDialog.FindViewById<ImageButton>(Resource.Id.large_brush);
-                smallBtn.Click += delegate
+                largeBtn.Click += delegate
                 {
+                    drawView.setColor(lastColor);
                     drawView.setBrushSize(largeBrush);
                     drawView.setLastBrushSize(largeBrush);
                     drawView.setErase(false);
@@ -121,7 +131,7 @@ namespace DrawApps
                 };
 
                 ImageButton mediumBtn = brushDialog.FindViewById<ImageButton>(Resource.Id.medium_brush);
-                smallBtn.Click += delegate
+                mediumBtn.Click += delegate
                 {
                     drawView.setErase(true);
                     drawView.setBrushSize(mediumBrush);
@@ -129,7 +139,7 @@ namespace DrawApps
                 };
 
                 ImageButton largeBtn = brushDialog.FindViewById<ImageButton>(Resource.Id.large_brush);
-                smallBtn.Click += delegate
+                largeBtn.Click += delegate
                 {
                     drawView.setErase(true);
                     drawView.setBrushSize(largeBrush);
