@@ -16,8 +16,8 @@ namespace DrawApps
     public class MainActivity : Activity, View.IOnClickListener
     {
         private DrawCanvas drawView;
-        private ImageButton currPaint, drawBtn, eraseBtn, newBtn, saveBtn;
-        private float smallBrush, mediumBrush, largeBrush;
+        private ImageButton currPaint,pencilBtn, drawBtn, eraseBtn, newBtn, saveBtn;
+        private float pencil, smallBrush, mediumBrush, largeBrush;
         private string lastColor;
         
 
@@ -28,9 +28,12 @@ namespace DrawApps
             this.Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             SetContentView(Resource.Layout.Main);
 
+            pencil = Resources.GetInteger(Resource.Integer.pencil_size);
             smallBrush = Resources.GetInteger(Resource.Integer.small_size);
             mediumBrush = Resources.GetInteger(Resource.Integer.medium_size);
             largeBrush = Resources.GetInteger(Resource.Integer.large_size);
+            pencilBtn = FindViewById<ImageButton>(Resource.Id.pencil_btn);
+            pencilBtn.SetOnClickListener(this);
             drawBtn = FindViewById<ImageButton>(Resource.Id.draw_btn);
             drawBtn.SetOnClickListener(this);
             eraseBtn = FindViewById<ImageButton>(Resource.Id.erase_btn);
@@ -40,9 +43,17 @@ namespace DrawApps
             saveBtn = FindViewById<ImageButton>(Resource.Id.save_btn);
             saveBtn.SetOnClickListener(this);
 
-            
+            //Initialize Color on the first time program run
+            lastColor = "#FF660000"; //red maroon
+
+            //Set medium brush as disabled as it's already clicked 
+            //LinearLayout brushchooser = FindViewById<LinearLayout>(Resource.Id.brush_size_chooser);
+            //ImageButton mediumBtn = brushchooser.FindViewById<ImageButton>(Resource.Id.medium_brush);
+            //mediumBtn.Enabled = false;
+
+
             // Set our view from the "main" layout resource
-            
+
 
             drawView = FindViewById<DrawCanvas>(Resource.Id.drawing);
             drawView.setLastBrushSize(mediumBrush);
@@ -70,13 +81,22 @@ namespace DrawApps
                 imgView.SetImageResource(Resource.Drawable.paint_pressed);
                 currPaint.SetImageResource(Resource.Drawable.paint);
                 currPaint = (ImageButton)view;
+                
+                
             }
         }
 
 
         public void OnClick(View view)
         {
-            if (view.Id == Resource.Id.draw_btn)
+            if(view.Id == Resource.Id.pencil_btn)
+            {
+                string pencilColor = "#666666";
+                drawView.setColor(pencilColor);
+                drawView.setBrushSize(pencil);
+                drawView.setErase(false);
+
+            }else if (view.Id == Resource.Id.draw_btn)
             {
                 Dialog brushDialog = new Dialog(this);
                 brushDialog.SetTitle("Brush Size:");
